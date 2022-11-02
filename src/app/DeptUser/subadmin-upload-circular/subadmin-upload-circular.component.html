@@ -1,0 +1,567 @@
+<div class="main-wrap" appNoRightClick>
+    <app-subadmin-header> </app-subadmin-header>
+    <div class="loadr" *ngIf='loading'>
+        <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+    <div class="main container cf" *ngIf="showMain">
+        <div class="row post-content">
+            <div class="col-md-12">
+                <h2>Dept Admin Section - Upload Document</h2>
+                <div class="login">
+                    <form [formGroup]="uploadDocForm" class="">
+                        <!-- <form class="login"> -->
+                        <div class="row">
+                            <div class="col-sm-4">
+
+                                <div class="form-group">
+                                    <label for="doctype">Document Type</label>
+                                    <select type="doctype" formControlName="doctype" class="form-control"
+                                        (change)="CreateNewGroupId($event.target.value)"
+                                        [ngClass]="{ 'is-invalid': submitted && f.doctype.errors }"
+                                        (change)="getType($event.target.value)">
+                                        <option value="">Select Document Type</option>
+                                        <option *ngFor='let data of respdept' value="{{data.userrole}}">
+                                            {{data.userrole}}</option>
+
+                                    </select>
+                                    <div *ngIf="submitted && f.doctype.errors" class="invalid-feedback">
+                                        <div *ngIf="f.doctype.errors.required">Document Type is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label><br></label>
+                                    <!-- <select type="text" formControlName="filter" class="form-control" (change) ="filter($event.target.value)"[ngClass]="{ 'is-invalid': submitted && f.filter.errors }">
+                      <option value="">Selec Type To Add Group Id</option>
+                      <option value="0">Create New Group Id</option>
+                      <option value="1">Already Exiest Group ID</option>
+                    </select> -->
+                                    <div class="row">
+                                        <div class="col-sm-6"><input type="radio" formControlName="filter" class=""
+                                                value="0" (click)="filter('0')"
+                                                [ngClass]="{ 'is-invalid': submitted && f.filter.errors }"> Create New
+                                            Group Id</div>
+                                        <div class="col-sm-6"><input type="radio" formControlName="filter" class=""
+                                                value="1" (click)="filter('1')"
+                                                [ngClass]="{ 'is-invalid': submitted && f.filter.errors }"> Exiest Group
+                                            Id</div>
+                                    </div>
+
+                                    <div *ngIf="submitted && f.docsrno.errors" class="invalid-feedback">
+                                        <div *ngIf="f.filter.errors.required">Group Id Filter is required.</div>
+                                        <!-- <div *ngIf="f.filter.errors.pattern">Document Serial Number is Numeric & characters.</div> -->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4" *ngIf="isExiest">
+                                <div class="form-group">
+                                    <label for="docsrno">Select Group Id <span class="required">*</span></label>
+                                    <select type="text" formControlName="groupid" class="form-control">
+                                        <option value="">Selec Group Id</option>
+                                        <option *ngFor="let data of resp6" value="{{data.groupid}}">{{data.oldorderno}}
+                                            ---{{data.oldorderdate | date: 'yyyy-MM-dd'}}</option>
+                                        <!-- <option value="1">Already Exiest Group ID</option> -->
+                                    </select>
+
+                                    <!--<div *ngIf="submitted && f.groupid.errors" class="invalid-feedback">
+                      <div *ngIf="f.groupid.errors.required">Group Id  is required.</div>
+                      <div *ngIf="f.filter.errors.pattern">Document Serial Number is Numeric & characters.</div> 
+                    </div>-->
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4" *ngIf="newCreate">
+                                <div class="form-group">
+                                    <label for="title">New Group ID<span class="required">*</span></label>
+                                    <input type="text" value="{{newid}}" readonly class="form-control">
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="docsrno">Document Serial Number<span class="required">*</span></label>
+                                    <input type="text" formControlName="docsrno" class="form-control"
+                                        (change)="getDate()"
+                                        [ngClass]="{ 'is-invalid': submitted && f.docsrno.errors }">
+                                    <div *ngIf="submitted && f.docsrno.errors" class="invalid-feedback">
+                                        <div *ngIf="f.docsrno.errors.required">Document Serial Number is required.</div>
+                                        <div *ngIf="f.docsrno.errors.pattern">Document Serial Number should be numeric
+                                            and characters accepted.</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4">
+
+                                <div class="form-group">
+                                    <label for="doctype">Department</label>
+                                    <select type="doctype" formControlName="dept" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.dept.errors }">
+                                        <option value="">Select Department</option>
+                                        <option value="NA">NA</option>
+                                        <option *ngFor="let dept of resp3" value="{{dept.depname}}">{{dept.depname}}
+                                        </option>
+
+                                    </select>
+                                    <div *ngIf="submitted && f.dept.errors" class="invalid-feedback">
+                                        <div *ngIf="f.dept.errors.required">Department is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="title">Title<span class="required">*</span></label>
+                                    <input type="text" formControlName="title" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                                    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                        <div *ngIf="f.title.errors.required">Title is required.</div>
+                                        <div *ngIf="f.title.errors.pattern">Title should be characters accepted.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="desc">Description <span class="required">*</span></label>
+                                    <input type="text" formControlName='desc' class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.desc.errors }" />
+                                    <!-- <textarea class="form-control" rows="4"></textarea> -->
+                                    <div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+                                        <div *ngIf="f.desc.errors.required">Description is required</div>
+                                        <div *ngIf="f.desc.errors.pattern">Description should be numeric and characters
+                                            accepted.</div>
+                                        <!-- <div *ngIf="f.desc.errors.minlength">Description must be at least 6 characters</div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="doc">Start Date <span class="required"></span></label>
+                                    <input type="text" class="form-control" autocomplete="off" id="startdate" />
+                                    <!-- <div *ngIf="submitted && f.doc.errors" class="invalid-feedback">
+                                        <div *ngIf="f.doc.errors.required">Document is required</div>
+                                   </div> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="doc">End Date <span class="required"></span></label>
+                                    <input type="text" class="form-control" autocomplete="off" id="enddate" />
+                                    <!-- <div *ngIf="submitted && f.doc.errors" class="invalid-feedback">
+                                        <div *ngIf="f.doc.errors.required">Document is required</div>
+                                   </div> -->
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="doc">Date of Document <span class="required">*</span></label>
+                                    <input type="text" class="form-control" autocomplete="off" id="datepicker" />
+                                    <!-- <div *ngIf="submitted && f.doc.errors" class="invalid-feedback">
+                                        <div *ngIf="f.doc.errors.required">Document is required</div>
+                                   </div> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="doc">Upload Document <span class="required">*</span></label>
+                                    <input type="file" accept=".pdf" formControlName='doc' class="form-control" multiple
+                                        (change)="onFilesChanged($event)"
+                                        [ngClass]="{ 'is-invalid': submitted && f.doc.errors }" />
+                                    <div *ngIf="submitted && f.doc.errors" class="invalid-feedback">
+                                        <div *ngIf="f.doc.errors.required">Document is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-warning btn-lar" (click)="uploadDoc()">Submit</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                    <!-- Modal -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <div class="row post-content">
+          <div class="col-md-12">
+            <h2>View Uploaded Documents</h2>
+            <div>
+              <div class="row">
+                  <form [formGroup]="ViewuploadDocForm" class="">
+                <div class="col-sm-4">
+    
+                    <div class="form-group">
+                        <label for="doctype">Document Type</label>
+                        <select  formControlName="viewdoctype" class="form-control" [ngClass]="{ 'is-invalid': submitted1 && f1.viewdoctype.errors }">
+                          <option value="">Select Document Type</option>
+                          <option *ngFor='let data of respdept' value="{{data.userrole}}">{{data.userrole}}</option>
+                        
+                        </select>
+                        <div *ngIf="submitted1 && f1.viewdoctype.errors" class="invalid-feedback">
+                          <div *ngIf="f1.viewdoctype.errors.required">Document Type is required.</div>
+                        </div>
+                      </div>
+                </div>
+    
+               
+                
+              </form> </div>
+              <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-warning btn-lar" (click)="getCircular()">View</button>
+                
+              </div>
+            </div>
+           
+          </div>
+    
+        </div> -->
+        <!-- <div class="row post-content">
+          <div class="col-md-12">
+            <h2>View Uploaded Documents</h2>
+            <div>
+              <div class="row">
+                  <form [formGroup]="ViewuploadDocForm" class="">
+                <div class="col-sm-4">
+    
+                    <div class="form-group">
+                        <label for="doctype">Document Type</label>
+                        <select type="doctype" formControlName="viewdoctype" class="form-control" [ngClass]="{ 'is-invalid': submitted4 && f3.viewdoctype.errors }">
+                          <option value="">Select Document Type</option>
+                          <option value="All">ALL</option>
+                          <option value="Employee Circular">Employee Circular</option>
+                          <option value="Public Circular">Public Circular</option>
+                          <option value="Tender">Tender</option>
+                          <option value="Vendor">Vendor</option>
+                          <option value="HR Notification">HR Notification</option>
+                          <option value="Employee Order">Employee Order</option>
+                          <option value="Public Order">Public Order</option>
+                          <option value="Latest News, Updates and Events">Latest News, Updates & Events</option>
+                          <option value="Latest Result">Latest Result</option>
+                          <option value="Career">Career</option>
+                          <option value="Press Release">Press Release</option>
+                          <option value="Notice Board">Notice Board</option>
+      
+                        </select>
+                        <div *ngIf="submitted4 && f3.viewdoctype.errors" class="invalid-feedback">
+                          <div *ngIf="f3.viewdoctype.errors.required">Document Type is required.</div>
+                        </div>
+                      </div>
+                </div>
+    
+               
+                
+              </form> </div>
+              <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-warning btn-lar" (click)="getCircularData()">View</button>
+                
+              </div>
+            </div>
+           
+          </div>
+    
+        </div> -->
+
+        <div class="row post-content">
+            <div class="col-md-12">
+                <h2>Uploaded Documents</h2>
+                <div class="table-responsive">
+
+
+                    <div class="table-responsive table-scroll">
+                        <table class="table table-striped">
+                            <tr class="thead">
+                                <th>Sr. No.</th>
+                                <!-- <th>Document ID</th> -->
+                                <th>Document Number</th>
+                                <th>Document Type</th>
+                                <th>Document Description</th>
+                                <!-- <th>Document UploadedBy</th> -->
+                                <th>Document UploadedDate</th>
+                                <!-- <th>Document DateRemoved</th> -->
+                                <!-- <th>Document reasonremoved</th> -->
+                                <!-- <th>Document timeupload</th> -->
+                                <!-- <th>Document status</th> -->
+                                <!-- <th>Document filename</th>
+                      <th>Document filepath</th> -->
+                                <!-- <th>Document removedby</th> -->
+                                <th>Document subject</th>
+                                <th width="250px">Action</th>
+                            </tr>
+                            <tbody>
+                                <!-- <ng-container > -->
+                                <!-- <tr>
+                          <td rowspan="6">{{i+1}}</td>
+                        </tr> -->
+                                <tr *ngFor='let data of pushDataArray;index as i'>
+                                    <td>{{i+1}}</td>
+                                    <!-- <td>{{data.docid}}</td> -->
+                                    <td>{{data.docsrno}}</td>
+                                    <td>{{data.doctype}}</td>
+                                    <td>{{data.docdescription}}</td>
+                                    <!-- <td>{{data.uploadby}}</td> -->
+                                    <td>{{data.orderdate | date: 'yyyy-MM-dd'}}</td>
+                                    <!-- <td>{{data.dateremoved  | date: 'yyyy-MM-dd'}}</td>
+                      <td>{{data.reasonremoved}}</td>
+                      <td>{{data.timeupload}}</td>
+                      <td>{{data.status}}</td> -->
+                                    <!-- <td>{{data.filename}}</td>
+                      <td>{{data.filepath}}</td> -->
+                                    <!-- <td>{{data.removedby}}</td> -->
+                                    <td>{{data.subject}}</td>
+                                    <td><a class="btn btn-info btn-xs" target="_blank"
+                                            [routerLink]="['/view-pdf',data.filepath,data.subject,data.docdescription,data.filename]">
+                                            View Document</a>
+                                        <!-- <td><button class="btn btn-info btn-xs"  (click)="onDownload(data.filepath)"> View Document</button> -->
+                                        &nbsp; &nbsp; <button class="btn btn-danger btn-xs" data-toggle="modal"
+                                            data-target="#removeModel"
+                                            (click)="getDocData(data.docid,data.subject,data.docsrno)"> Remove
+                                            Doc</button>
+                                        <!-- <td><button class="btn btn-info btn-xs"  data-toggle="modal" data-target="#myModal" (click)="onDownload(data.filepath)"> View Document</button></td> -->
+                                </tr>
+                                <!-- </ng-container> -->
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Uploaded Document</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <form [formGroup]="removeForm" (ngSubmit)="OnRemove()" class="">
+                                    <div class="login">
+
+                                        <!-- <form class="login"> -->
+                                        <div class="row">
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="title">Document Number<span
+                                                            class="required">*</span></label>
+                                                    <input type="text" class="form-control" readonly
+                                                        value="{{circularNo}}">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="title">Document Subject<span
+                                                            class="required">*</span></label>
+                                                    <input type="text" class="form-control" readonly
+                                                        value="{{circularSub}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="title">Reason for Remove<span
+                                                            class="required">*</span></label>
+                                                    <input type="text" formControlName="remark" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted2 && f2.remark.errors }">
+                                                    <div *ngIf="submitted2 && f2.remark.errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f2.remark.errors.required">Remark is required.</div>
+                                                        <div *ngIf="f2.remark.errors.pattern">Remark should be
+                                                            characters accepted.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="clearfix"></div>
+
+                                        <!-- Modal -->
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-warning btn-lar">Submit</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+
+
+
+        <div class="modal fade" id="removeModel" tabindex="-1" role="dialog" aria-labelledby="removeModel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="removeModel">Uploaded Document</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form [formGroup]="removeForm" (ngSubmit)="RemoveOtp()" class="">
+                        <div class="modal-body">
+
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="title">Document Number<span class="required">*</span></label>
+                                        <input type="text" class="form-control" readonly value="{{circularNo}}">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="title">Document Subject<span class="required">*</span></label>
+                                        <input type="text" class="form-control" readonly value="{{circularSub}}">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="title">Reason for Remove<span class="required">*</span></label>
+                                        <input type="text" formControlName="remark" class="form-control"
+                                            [ngClass]="{ 'is-invalid': submitted2 && f2.remark.errors }">
+                                        <div *ngIf="submitted2 && f2.remark.errors" class="invalid-feedback">
+                                            <div *ngIf="f2.remark.errors.required">Title is required.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- </div> -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" (click)="RemoveOtp()">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{msg}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form [formGroup]="otpform" class="login">
+                        <div class="modal-body">
+
+                            <!-- <form class="login"> -->
+                            <div class="form-group">
+                                <label for="uotp">One Time Password<span class="required">*</span></label>
+                                <input type="password" class="form-control" formControlName="uotp"
+                                    [ngClass]="{ 'is-invalid': submitted3 && f1.uotp.errors }">
+
+                                <div *ngIf="submitted3 && f1.uotp.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.uotp.errors.required">OTP is required</div>
+                                    <div *ngIf="f1.uotp.errors.pattern">OTP is should be numeric.</div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+                            <!-- <p class="lost_password"> -->
+                            <!-- <a href="#" data-toggle="modal" data-target="#forgot-pwd" >Lost your password?</a> -->
+                            <!-- </p> -->
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" (click)="hidden()">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="removeDocOTPModel" tabindex="-1" role="dialog" aria-labelledby="removeDocOTPModel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="removeDocOTPModel">{{msg}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form [formGroup]="otpform" class="login" (ngSubmit)="OnRemove()">
+                        <div class="modal-body">
+
+                            <!-- <form class="login"> -->
+                            <div class="form-group">
+                                <label for="uotp">One Time Password<span class="required">*</span></label>
+                                <input type="password" class="form-control" formControlName="uotp"
+                                    [ngClass]="{ 'is-invalid': submitted3 && f1.uotp.errors }">
+
+                                <div *ngIf="submitted3 && f1.uotp.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.uotp.errors.required">OTP is required</div>
+                                    <div *ngIf="f1.uotp.errors.pattern">OTP is should be numeric.</div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+                            <!-- <p class="lost_password"> -->
+                            <!-- <a href="#" data-toggle="modal" data-target="#forgot-pwd" >Lost your password?</a> -->
+                            <!-- </p> -->
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" (click)="OnRemove()">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="showGallary">
+        <app-subadmin-upload-gallary></app-subadmin-upload-gallary>
+    </div>
+</div>

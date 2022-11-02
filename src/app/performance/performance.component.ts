@@ -1,0 +1,254 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-performance',
+  templateUrl: './performance.component.html',
+  styleUrls: ['./performance.component.css']
+})
+export class PerformanceComponent implements OnInit {
+
+  pdfObj= null;
+  constructor() {
+   
+   }
+
+  ngOnInit(): void {
+    this.pdfObj = [
+      
+      {
+        'date':'15.10.2022',
+         'link':'assets/img/pdf/Fortnightly_Stock_Position_15.10.2022.pdf'
+         },
+      {
+        'date':'30.09.2022',
+         'link':'assets/img/pdf/Fortnightly_Stock_Position_30.09.2022.pdf'
+         },
+      
+      {
+        'date':'31.08.2022',
+         'link':'assets/img/pdf/Fortnightly_Stock_31.08.2022.pdf'
+         },
+         {
+          'date':'15.08.2022',
+           'link':'assets/img/pdf/Fortnightly_Stock_Position_15.08.22.pdf'
+           },
+         {
+          'date':'31.07.2022',
+           'link':'assets/img/pdf/Fortnightly_Stock_Position_31.7.2022.pdf'
+           },
+         {
+          'date':'15.07.2022',
+           'link':'assets/img/pdf/Fortnightly_Stock_Position_15.7.2022.pdf'
+           },   
+      {
+        'date':'30.06.2022',
+         'link':'assets/img/pdf/Fortnighly_Stock_30.6.2022.pdf'
+         },
+      {
+        'date':'15.06.2022',
+         'link':'assets/img/pdf/Fortnighly_Stock_Position_15.06.2022.pdf'
+         },
+      {
+        'date':'31.05.2022',
+         'link':'assets/img/pdf/1-Fortnighly_Stock_Position_31.5.2022.pdf'
+         },
+         {
+          'date':'15.05.2022',
+           'link':'assets/img/pdf/1-Fortnighly_Stock_Position_15.5.2022.pdf'
+           },
+      {
+     'date':'30.04.2022',
+      'link':'assets/img/pdf/1-Fortnighly_Stock_Position_30.4.2022.pdf'
+      },
+      {
+        'date':'15.04.2022',
+         'link':'assets/img/pdf/Fortnighly_Stock_Position_15.4.2022.pdf'
+         },
+      
+      {
+        'date':'31.03.2022',
+         'link':'assets/img/pdf/Fortnighly_Stock_Position_31.3.2022.pdf'
+         },
+      {
+        'date':'25.03.2022',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.3.2022.pdf'
+      },
+      {
+        'date':'28.02.2022',
+        'link':'assets/img/pdf/19-Fortnighly_Stock_Position_28.2.2022.pdf'
+      },
+      {
+        'date':'31.1.2022',
+        'link':'assets/img/pdf/19-Fortnighly_Stock_Position_31.1.2022.pdf'
+      },
+      {
+        'date':'15.1.2022',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.1.2022.pdf'
+      },
+       {
+        'date':'31.12.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_31.12.2021.pdf'
+      },
+      {
+        'date':'15.12.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.12.2021.pdf'
+      },
+      {
+        'date':'30.11.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_30.11.2021.pdf'
+      },
+      {
+        'date':'15.11.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.11.2021.pdf'
+      },
+      {
+        'date':'31.10.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_31.10.2021.pdf'
+      },
+      {
+        'date':'15.10.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.10.2021.pdf'
+      },
+      {
+        'date':'31.7.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_31.7.2021.pdf'
+      },
+      {
+        'date':'15.7.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.7.2021.pdf'
+      },
+      {
+        'date':'30.6.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_30.6.2021.pdf'
+      },
+      {
+        'date':'15.6.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.6.2021.pdf'
+      },
+      {
+        'date':'30.4.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_30.4.2021.pdf'
+      },
+      {
+        'date':'15.4.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.4.2021.pdf'
+      },
+      {
+        'date':'31.3.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_31.3.2021.pdf'
+      },
+      {
+        'date':'15.3.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.3.2021.pdf'
+      },
+      {
+        'date':'28.2.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Report__28.2.2021.pdf'
+      },
+      {
+        'date':'15.2.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.2.2021.pdf'
+      },
+      {
+        'date':'31.1.2021',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_31.1.2021.pdf'
+      },
+      {
+        'date':'31.12.2020',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_31.12.2020.pdf'
+      },
+      {
+        'date':'15.12.2020',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.12.2020.pdf'
+      },
+      {
+        'date':'30.11.2020',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_30.11.2020.pdf'
+      },
+      {
+        'date':'15.11.2020',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.11.2020.pdf'
+      },
+      {
+        'date':'31.10.2020',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_31.10.2020.pdf'
+      },
+      {
+        'date':'15.10.2020',
+        'link':'assets/img/pdf/Fortnighly Stock Position 15.10.2020.pdf'
+      },
+      {
+        'date':'30.9.2020',
+        'link':'assets/img/pdf/Fortnighly Stock Position 30.9.2020.pdf'
+      },
+      {
+        'date':'15.9.2020',
+        'link':'assets/img/pdf/Fortnighly_Stock_Position_15.9.2020.pdf'
+      },
+      {
+        'date':'31.8.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_31082020.pdf'
+      },
+      {
+        'date':'15.8.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_15082020.pdf'
+      },
+      {
+        'date':'30.7.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_31072020.pdf'
+      },
+      {
+        'date':'15.7.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_15072020.pdf'
+      },
+      {
+        'date':'30.6.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_30062020.pdf'
+      },
+      {
+        'date':'15.6.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_15062020'
+      },
+      {
+        'date':'31.5.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_31052020'
+      },
+      {
+        'date':'15.5.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_15052020.pdf'
+      },
+      {
+        'date':'30.4.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_30042020.pdf'
+      },
+      {
+        'date':'31.3.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_31032020.pdf'
+      },
+      {
+        'date':'15.3.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_15032020.pdf'
+      },
+      {
+        'date':'29.2.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_29022020.pdf'
+      },
+      {
+        'date':'15.2.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_15022020.pdf'
+      },
+      {
+        'date':'31.1.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_31012020.pdf'
+      },
+      {
+        'date':'15.1.2020',
+        'link':'assets/img/pdf/Material_Stock_Position_15012020.pdf'
+      },
+           
+      
+  ]
+
+  }
+
+}

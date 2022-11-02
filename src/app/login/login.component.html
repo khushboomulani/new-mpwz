@@ -1,0 +1,78 @@
+<div class="main-wrap">
+   <app-header></app-header>
+   <div class="container">
+      <div class="btn-group btn-breadcrumb breadcrumb-default">
+         <a class="btn btn-default visible-lg-block visible-md-block" href="#">Home</a>
+         <div class="btn btn-default visible-xs-block hidden-xs visible-sm-block ">...</div>
+         <div class="btn btn-warning"><b>Login/Registration</b></div>
+      </div>
+   </div>
+   <div class="main container cf" *ngIf="showlogin">
+      <div class="row post-content">
+         <div class="col-md-6 col-md-offset-3">
+            <h2>Departmental Login</h2>
+            <form [formGroup]="loginForm" class="login" (ngSubmit)="onSubmit()">
+               <!-- <form class="login"> -->
+               <div class="form-group">
+                  <label for="username">User Name<span class="required">*</span></label>
+                  <input type="text" formControlName="UserName" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }">
+
+                  <div *ngIf="submitted && f.UserName.errors" class="invalid-feedback">
+                     <div *ngIf="f.UserName.errors.required">User Name is required</div>
+                  </div>
+
+               </div>
+
+
+               <div class="form-group">
+                  <label for="pwd">Password <span class="required">*</span></label>
+                  <input type="password" formControlName="password" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                     <div *ngIf="f.password.errors.required">Password is required</div>
+                     <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                  </div>
+
+               </div>
+               <div class="checkbox">
+                  <button type="submit" class="btn btn-warning">LOGIN</button>
+                  &nbsp;&nbsp;&nbsp; <label><input type="checkbox"> Remember me</label>
+               </div>
+               <p class="lost_password">
+                  <!-- <a href="#" data-toggle="modal" data-target="#forgot-pwd" >Lost your password?</a> -->
+               </p>
+            </form>
+            <!-- Modal -->
+         </div>
+      </div>
+   </div>
+
+
+   <div class="main container cf" *ngIf='showotp'>
+      <div class="row post-content">
+         <div class="col-md-6 col-md-offset-3">
+            <h2>{{msg}}</h2>
+            <form [formGroup]="otpform" class="login" (ngSubmit)="otpSubmit()">
+               <!-- <form class="login"> -->
+               <div class="form-group">
+                  <label for="uotp">One Time Password<span class="required">*</span></label>
+                  <input type="password" class="form-control" formControlName="uotp"
+                     [ngClass]="{ 'is-invalid': submitted1 && f1.uotp.errors }">
+
+                  <div *ngIf="submitted1 && f1.uotp.errors" class="invalid-feedback">
+                     <div *ngIf="f1.uotp.errors.required">OTP is required</div>
+                     <div *ngIf="f1.uotp.errors.pattern">OTP is should be numeric.</div>
+                  </div>
+               </div>
+               <div class="checkbox">
+                  <button type="submit" class="btn btn-warning">Submit</button>
+
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+<app-footer></app-footer>

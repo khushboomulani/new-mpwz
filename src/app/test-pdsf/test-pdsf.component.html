@@ -1,0 +1,31 @@
+<!-- <div class="loader" *ngIf='loader'></div> -->
+
+<div class="main-wrap">
+    <div class="loadr" *ngIf='loader'>
+        <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+    <app-header></app-header>
+    <div class="container">
+        <div class="btn-group btn-breadcrumb breadcrumb-default">
+            <a class="btn btn-default visible-lg-block visible-md-block" href="#">Home</a>
+            <div class="btn btn-default visible-xs-block hidden-xs visible-sm-block "> ... </div>
+            <div class="btn btn-warning"><b>Public Press Release</b></div>
+        </div>
+    </div>
+    <div class="main container cf">
+        <div class="row post-content">
+            <div class="col-md-12">
+                <h2 *ngIf="showMsg">Please wait file is Download Automatically and Window is Automatically
+                    Closed...........</h2>
+                <div *ngIf="show">
+                    <h2>{{title}}-{{desc}} <button class="btn btn-warning pull-right" (click)="onDownload()"><i
+                                class="fa fa-download"></i> Download</button></h2>
+                    <div class="pdf-container set-pdf">
+                        <pdf-viewer [src]="src" [original-size]="false"></pdf-viewer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-footer></app-footer> -->

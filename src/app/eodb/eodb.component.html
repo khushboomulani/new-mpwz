@@ -1,0 +1,293 @@
+<div class="main-wrap">
+  <div class="loadr" *ngIf='loading'>
+        <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+  <app-header></app-header>
+<div  class="container">
+    <div  class="btn-group btn-breadcrumb breadcrumb-default">
+       <a  class="btn btn-default visible-lg-block visible-md-block" href="#">Home</a>
+       <div  class="btn btn-default visible-xs-block hidden-xs visible-sm-block ">...</div>
+       <div  class="btn btn-warning"><b >EODB</b></div>
+    </div>
+ </div>
+ <div  class="main container cf">
+    <div  class="row ">
+       <div  class="col-md-12">
+          <h2  class="headcontent">Compliance of Points under Ease of Doing Business (EoDB)</h2>
+          <p >Madhya Pradesh Paschim Kshetra Vidyut Vitaran Company Ltd has complied with the recommendations proposed under Business Reform Action Plan (BRAP) for Ease of Doing Business. The links related to the EoDB are provided below. </p>
+          <div  class="row">
+             <div  class="col-md-10 col-md-offset-1">
+               <div class="panel-group" id="accordion">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                           <i  aria-hidden="true" class="fa fa-plug"></i>
+                           Apply for New Service Connection
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p >User can apply for New Service Connection, Load Change in Existing Connection using the Following Link</p>
+                        <a  class="btn btn-info" href="https://mpwzservices.mpwin.co.in/mpeb_english/nsclt" target="_blank"><i  class="fa fa-bolt"></i> Urjas (New Service Connection)</a>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                           <i  aria-hidden="true" class="fa fa-plug"></i>
+                           Documents Required for Electricity Connection
+                       
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p >Currently there are three documents required for obtaining an electricity connection using Urjas Portal. </p>
+                               <ol  type="1">
+                                  <li >Proof of ownership/tenancy or occupation rights for the premises (स्वामित्व का प्रमाणीकरण करने हेतु दस्तावेज़)</li>
+                                  <li >
+                                     Identity proof can be one of the following(In case of non industrial connection)(पहचान प्रमाण,निम्न में से कोई एक (गैर औध्योगिक संयोजन के लिए)) 
+                                     <ol  type="a">
+                                        <li >Aadhaar card (आधार कार्ड)</li>
+                                        <li >Voter ID (मतदाता परिचय पत्र)</li>
+                                        <li >Ration card (राशन कार्ड)</li>
+                                        <li >Passport (पासपोर्ट)</li>
+                                     </ol>
+                                     <p >For Industrial connection (औध्योगिक संयोजन के लिए)</p>
+                                  </li>
+                                  <li >In case of Proprietary firm, an affidavit to be submitted stating that the applicant is the sole proprietor of the firm or In the case of partnership firm, a certified copy of partnership deed or In case of limited company, memorandum and articles of association and certificate of incorporation <br >(यदि फ़र्म प्रोपराईटरी फ़र्म है तो ,आवेदक फर्म का पूर्णरूपेण प्रोपराईटर है के लिए एफ़िडेविट अथवा यदि फ़र्म पार्टनर्शिप फर्म है तो पार्टनर शिप डीड की प्रमाणित प्रति अथवा लिमिटेड कंपनी के लिए मेमोरेंडम और आर्टिकल ऑफ एसोसिएशन और इनकारपोरेशन का प्रमाण पत्र)</li>
+                               </ol>
+                              </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                           <i  aria-hidden="true" class="fa fa-search"></i>
+                           Tracking of Application
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p >User can track their application using the Following Link or by using the Chatbot Service available on our portal </p>
+                               <a  class="btn btn-info" href="https://mpwzservices.mpwin.co.in/mpeb_english/traceapp" target="_blank">Track Application</a>
+                            </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                     <div class="panel-heading">
+                       <h4 class="panel-title">
+                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                           <i  aria-hidden="true" class="fa fa-file"></i>
+                                  Tariff Details
+                         </a>
+                       </h4>
+                     </div>
+                     <div id="collapseFour" class="panel-collapse collapse ">
+                       <div class="panel-body">
+                        <p >Tariff Details are available on our Portal and can be accessed using the following link. </p>
+                               <a  class="btn btn-primary" routerlink="/regulation" href="#/regulation"><i  class="fa fa-star"></i> Tariff Details</a>
+                            </div>
+                     </div>
+                   </div>
+                   <div class="panel panel-default">
+                     <div class="panel-heading">
+                       <h4 class="panel-title">
+                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                           <i  aria-hidden="true" class="fa fa-file"></i>
+                                  FCA Charges
+                         </a>
+                       </h4>
+                     </div>
+                     <div id="collapseFive" class="panel-collapse collapse ">
+                       <div class="panel-body">
+                        <p >FCA Details are available on our Portal and can be accessed using the following link.</p>
+                               <a  class="btn btn-primary" routerlink="/regulation" href="#/regulation"><i  class="fa fa-star"></i> FCA Details</a>
+                            </div>
+                     </div>
+                   </div>
+                   <div class="panel panel-default">
+                     <div class="panel-heading">
+                       <h4 class="panel-title">
+                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                           <i  aria-hidden="true" class="fa fa-file"></i>
+                           Electricity Duty
+                         </a>
+                       </h4>
+                     </div>
+                     <div id="collapseSix" class="panel-collapse collapse ">
+                       <div class="panel-body">
+                        <p >Electricity Duty information is available on our Portal and can be accessed using the following link.</p>
+                               <a  class="btn btn-primary" routerlink="/regulation" href="#/regulation"><i  class="fa fa-star"></i> Electricity Duty Details</a>
+                            </div>
+                     </div>
+                   </div>
+                   <div class="panel panel-default">
+                     <div class="panel-heading">
+                       <h4 class="panel-title">
+                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+                           <i  aria-hidden="true" class="fa fa-lightbulb-o"></i>
+                           Outages Information
+                         </a>
+                       </h4>
+                     </div>
+                     <div id="collapseSeven" class="panel-collapse collapse">
+                       <div class="panel-body">
+                        <p >Information related to planned future shutdowns and other previous interruptions can be viewed using the Following Link. </p>
+                        <a  class="btn btn-info" href="http://urjastesting.mpwin.co.in/shms-report/shut-dash" target="_blank"><i  class="fa fa-bolt"></i> Shutdown / Outage Information</a>
+                     </div>
+                     </div>
+                   </div>
+                   <div class="panel panel-default">
+                     <div class="panel-heading">
+                       <h4 class="panel-title">
+                         <a class="accordion-toggle" data-toggle="collapse" (click)="getLT()" data-parent="#accordion" href="#collapseEight">
+                           <i  aria-hidden="true" class="fa fa-industry" ></i>
+                           LT Application Dashboard
+                         </a>
+                       </h4>
+                     </div>
+                     <div id="collapseEight" class="panel-collapse collapse">
+                       <div class="panel-body">
+                        <div  class="row">
+                           <div  class="col-md-12 table-responsive">
+                              <table  class="table table-stripped">
+                                 <thead >
+                                    <tr >
+                                       <td  colspan="9"><b >The details displayed below is for applications received from 01-Nov-2020 to present</b></td>
+                                    </tr>
+                                    <tr >
+                                       <th >Sr. No.</th>
+                                       <th >Type</th>
+                                       <th >Timeline defined in PSG</th>
+                                       <th >No. of applications received online</th>
+                                       <th >No. of applications approved</th>
+                                       <th >No. of applications pending</th>
+                                       <th >Average time of resolution</th>
+                                       <th >Minimum time taken for resolution</th>
+                                       <th >Median time taken for resolution</th>
+                                       <th >Maximum time taken for resolution</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody >
+                                    <!---->
+                                    <tr *ngFor="let data of LTResp; index as i">
+                                      <td >{{i+1}}</td>
+                                      <td>{{data.apptype}}</td>
+                                      <td>{{data.lsgdays}}</td>
+                                      <td>{{data.totalapplicationreceived}}</td>
+                                      <td>{{data.totalapproved}}</td>
+                                      <td>{{data.totalpending}}</td>
+                                      <td>{{data.avg_tm_tkn_to_conn}}</td>
+                                      <td>{{data.median_tm_tkn_to_conn}}</td>
+                                      <td>{{data.minimum_tm_tkn_to_conn}}</td>
+                                      <td>{{data.maximum_tm_tkn_to_conn}}</td>
+                                   </tr>
+                                   
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                     </div>
+                   </div>
+                   <div class="panel panel-default">
+                     <div class="panel-heading">
+                       <h4 class="panel-title">
+                         <a class="accordion-toggle" data-toggle="collapse" (click)="getHT()" data-parent="#accordion" href="#collapseNine">
+                           <i  aria-hidden="true" class="fa fa-industry"></i>
+                           HT Application Dashboard
+                         </a>
+                       </h4>
+                     </div>
+                     <div id="collapseNine" class="panel-collapse collapse">
+                       <div class="panel-body">
+                        <div  class="row">
+                           <div  class="col-md-12 table-responsive">
+                              <table  class="table table-stripped">
+                                 <thead >
+                                    <tr >
+                                       <td  colspan="9"><b >The details displayed below is for applications received from 01-Nov-2020 to present</b></td>
+                                    </tr>
+                                    <tr >
+                                       <th >Sr. No.</th>
+                                       <th>App Type</th>
+                                       <th >Timeline defined in PSG</th>
+                                       <th >No. of applications received online</th>
+                                       <th >No. of applications approved</th>
+                                       <th >No. of applications pending</th>
+                                       <th >Average time of resolution</th>
+                                       <th >Minimum time taken for resolution</th>
+                                       <th >Median time taken for resolution</th>
+                                       <th >Maximum time taken for resolution</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody >
+                                    <tr *ngFor="let data of HTresp; index as i">
+                                       <td >{{i+1}}</td>
+                                       <td>{{data.apptype}}</td>
+                                       <td>{{data.lsgdays}}</td>
+                                       <td>{{data.totalapplicationreceived}}</td>
+                                       <td>{{data.totalapproved}}</td>
+                                       <td>{{data.totalpending}}</td>
+                                       <td>{{data.avg_tm_tkn_to_conn}}</td>
+                                       <td>{{data.median_tm_tkn_to_conn}}</td>
+                                       <td>{{data.minimum_tm_tkn_to_conn}}</td>
+                                       <td>{{data.maximum_tm_tkn_to_conn}}</td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div></div>
+                     </div>
+                   </div>
+                   <div class="panel panel-default">
+                     <div class="panel-heading">
+                       <h4 class="panel-title">
+                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">
+                           <i  aria-hidden="true" class="fa fa-cogs"></i>
+                           DG Set Installation
+                         </a>
+                       </h4>
+                     </div>
+                     <div id="collapseTen" class="panel-collapse collapse ">
+                       <div class="panel-body">
+                        <a  class="btn btn-info" href="https://esd.mponline.gov.in/portal/services/HV/HVHome.aspx" target="_blank">You can apply for DG Set Installation</a>
+                     </div>
+                     </div>
+                   </div>
+                   <div class="panel panel-default">
+                     <div class="panel-heading">
+                       <h4 class="panel-title">
+                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">
+                           <i  aria-hidden="true" class="fa fa-plug"></i>
+                           Charges for Name Transfer of Service Connection
+                         </a>
+                       </h4>
+                     </div>
+                     <div id="collapseEleven" class="panel-collapse collapse">
+                       <div class="panel-body">
+                        <p >The charges for Name Transfer are as follows.</p>
+                               <ol  type="1">
+                                  <li >LT Consumers – Rs. 100</li>
+                                  <li > HT Consumers – Rs. 2000</li>
+                               </ol>
+                              </div>
+                     </div>
+                   </div>
+                </div>
+              
+              
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ </div>
+<app-footer></app-footer>

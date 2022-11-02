@@ -1,0 +1,70 @@
+<div class="main-wrap" appNoRightClick>
+    <div class="loadr" *ngIf='loading'>
+        <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+    <app-header></app-header>
+    <div class="container">
+        <div class="btn-group btn-breadcrumb breadcrumb-default">
+            <a href="#" class="btn btn-default visible-lg-block visible-md-block">Home</a>
+            <div class="btn btn-default visible-xs-block hidden-xs visible-sm-block ">
+                ...
+            </div>
+            <div class="btn btn-warning"><b>Orders</b></div>
+        </div>
+    </div>
+    <!-- <h2>PDF Viewer</h2>
+    
+    <div class="pdf-container">
+      <pdf-viewer [src]="src"
+                  [original-size]="false"
+      ></pdf-viewer>
+    </div> -->
+
+    <div class="main container cf">
+        <div class="row post-content">
+            <div class="col-md-12">
+                <h2>Order</h2>
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr class="thead">
+                            <th>Sr. No.</th>
+                            <th>Document Number</th>
+                            <th>Date</th>
+                            <th>Title</th>
+                            <th width="250px"></th>
+                        </tr>
+                        <tbody *ngFor='let data1 of resp;index as i'>
+
+                            <tr>
+                                <td rowspan="6">{{i+1}}</td>
+                            </tr>
+                            <tr *ngFor='let data of data1.docs;index as i1'>
+                                <td>{{data.docsrno}}</td>
+                                <td>{{data.orderdate | date: 'yyyy-MM-dd'}}</td>
+                                <td>{{data.subject}}</td>
+                                <td><a class="btn btn-info btn-xs" target="_blank"
+                                        [routerLink]="['/view-pdf',data.filepath,data.subject,data.docdescription,data.filename]">
+                                        View Document</a></td>
+
+                            </tr>
+                            <!-- </ng-container> -->
+                        </tbody>
+                        <tbody *ngIf="resp?.length < 1">
+                            <tr>
+                                <td colspan="5" class="text-center">No record found.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- The Modal -->
+
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

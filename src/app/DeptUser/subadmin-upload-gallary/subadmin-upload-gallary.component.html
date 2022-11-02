@@ -1,0 +1,102 @@
+<div class="main-wrap" appNoRightClick>
+    <div  class="loadr" *ngIf='loading'>
+      <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+    <!-- <app-dept-header></app-dept-header> -->
+    <!--<div class="container">
+         <div class="btn-group btn-breadcrumb breadcrumb-default">
+            <a href="#" class="btn btn-default visible-lg-block visible-md-block">Home</a>
+            <a href="/gallery-dashboard" class="btn btn-default visible-lg-block visible-md-block">Gallery</a>
+            <div class="btn btn-default visible-xs-block hidden-xs visible-sm-block ">...</div>
+            <div class="btn btn-warning"><b>Admin Section</b></div>
+        </div>
+    </div> -->
+    <div class="main container cf">
+        <div class="row post-content">
+          <div class="col-md-12">
+            <h2>User Create Gallery<button type="submit" class="btn btn-info" (click)="goback()">Back</button></h2>
+            <div class="login">
+            <div  class="" >
+            <form [formGroup] = "galleryForm" class="">  
+               <div class="row">
+                 <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="gallaryname">Album Name</label>
+                        <input type="text" formControlName="gallaryname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gallaryname.errors }">
+                         <div *ngIf="submitted && f.gallaryname.errors" class="invalid-feedback">
+                          <div *ngIf="f.gallaryname.errors.required">Album Name is required.</div>
+                      </div>
+                     </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label for="galldescription">Album Description</label>
+                         <input type="text" formControlName="galldescription" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.galldescription.errors }">
+                         <div *ngIf="submitted && f.galldescription.errors" class="invalid-feedback">
+                          <div *ngIf="f.galldescription.errors.required">Album Description is required.</div>
+                        </div>
+                       </div>
+                      </div>                
+           <div class="col-md-2"><br>
+                  <button type="submit" class="btn btn-warning btn-lar mt-15" (click)="onSubmit()">Submit</button>
+              </div>
+              <div class="clearfix"></div>
+              </div>
+              </form>
+              <!-- Modal -->
+            </div>
+          </div>
+  
+        </div>
+        <div class="col-md-12" >
+          <h2>Gallary Section</h2>
+          <div class="table-responsive">
+          <table class="table table-striped">
+            <tr class="thead">
+              <th>Sr. No.</th>
+              <th>Galary Id</th>
+              <th>Galary Name</th>
+              <th>Galary Description</th>
+              <th>Galary Created Date </th>
+              <th>Galary Removed Date </th>
+              <th>Status </th>
+              <th width="250px">Action</th>
+            </tr>
+            <tr *ngFor='let data of respgetgall;index as i'>
+              <td>{{i+1}}</td>
+              <td>{{data.galaryid}}</td>
+              <td>{{data.galaryname}}</td>
+              <td>{{data.description}}</td>
+               <td>{{data.datecreated  | date: 'yyyy-MM-dd'}}</td>
+              <td>{{data.dateremoved | date: 'yyyy-MM-dd'}}</td>
+              <td>{{data.status}}</td>
+              <!-- <td><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button>&nbsp; -->
+              <td>  <button class="btn btn-danger btn-xs" (click)="RemoveGallary(data.galaryid)"><i class="fa fa-remove"></i> Delete</button>&nbsp;<button class="btn btn-xs btn-success" [routerLink] = "['/subadmin-view-gallary',data.galaryid]"><i class="fa fa-file"  ></i>Add Images</button></td>
+            </tr>
+          </table>
+          </div>
+        </div>
+        <!-- <div class="row post-content">
+            <div class="col-md-12">
+              <h2>Admin Section</h2>
+              <div class="table-responsive">
+              <table class="table table-striped">
+                <tr class="thead">
+                  <th>Sr. No.</th>
+                  <th>Title</th>
+                  <th>Uploaded Date</th>
+                  <th width="250px">Action</th>
+                </tr>
+                <tr>
+                  <td>1.</td>
+                  <td>abc</td>
+                  <td>1/12/2019</td>
+                  <td><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button>&nbsp;<button class="btn btn-danger btn-xs"><i class="fa fa-remove"></i> Delete</button>&nbsp;<button class="btn btn-xs btn-success"><i class="fa fa-file"></i> View Document</button></td>
+                </tr>
+              </table>
+              </div>
+            </div>
+          </div> -->
+    </div>
+    </div>
+    </div>

@@ -1,0 +1,172 @@
+<div class="main-wrap">
+   <app-header></app-header>
+   <div class="container">
+      <div class="btn-group btn-breadcrumb breadcrumb-default">
+         <a class="btn btn-default visible-lg-block visible-md-block" href="#">Home</a>
+         <div class="btn btn-default visible-xs-block hidden-xs visible-sm-block ">...</div>
+         <div class="btn btn-warning"><b>Careers</b></div>
+      </div>
+   </div>
+   <div class="main container cf">
+      <div class="row ">
+         <div class="col-md-12">
+            <h2 class="headcontent">Careers</h2>
+         </div>
+         <div role="tabpanel">
+            <div class="col-sm-3">
+               <ul class="nav nav-pills brand-pills nav-stacked" role="tablist">
+                  <li class="brand-nav active" role="presentation"><a aria-controls="tab" aria-expanded="false"
+                        data-toggle="tab" href="#tab1" role="tab">Why MPPKVVCL</a></li>
+                  <li class="brand-nav" role="presentation"><a aria-controls="tab2" aria-expanded="false"
+                        data-toggle="tab" href="#tab2" role="tab">Current Openings</a></li>
+                  <li class="brand-nav" role="presentation"><a aria-controls="tab3" aria-expanded="false"
+                        data-toggle="tab" href="#tab3" role="tab">Latest Results</a></li>
+               </ul>
+            </div>
+            <div class="col-sm-9">
+               <div class="tab-content">
+                  <div class="tab-pane active" id="tab1" role="tabpanel">
+                     <h4 id="tab1">Why MPPKVVCL </h4>
+                     <hr>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <p>MPPKVVCL is one of the three electricity distribution companies of Madhya Pradesh. We are
+                              playing a key role in electricity distribution and aims to emerge as one of the most
+                              admired company offering affordable quality and uninterrupted services to our customers.
+                              We have the most significant presence in Madhya Pradesh.</p>
+                           <p>When it comes at MPPKVVCL, the career options are ample. For new recruits joining
+                              MPPKVVCL, the company provides challenging career and exponential growth. We believe that
+                              any investment in our new recruits and their potential is the largest investment we can
+                              make. Thus we are in search of talents constantly that can perform with determination and
+                              excellence.</p>
+                           <p>MPPKVVCL is among the fast growing organizations with endless opportunities, and well
+                              accepted by its customers. We offer very exciting opportunities that enable a wide
+                              platform for our employees to explore their potential. Here different vertical's
+                              strategies and opportunities woven together and every employee have their own part to
+                              collaborate and contribute in this grant weave.</p>
+                           <p>We unleash the full potential and talent of our employee with the help of aspect like:-
+                           </p>
+                           <ol type="a">
+                              <li>freedom at work</li>
+                              <li>unmatched exposure and leadership </li>
+                              <li>opportunity to outrun at rapid pace </li>
+                           </ol>
+                           <br>
+                           <p>Ultimately at MPPKVVCL you work with, you don't work under. Here you will find very smooth
+                              induction and cooperative environment to keep the enthusiasm to perform alive because we
+                              know one needs to love and enjoy what he is doing. </p>
+                           <p>We asses managerial, potential and functional competence in a transparent manner to
+                              accomplish overall mission and vision of the organization by linking company's objective
+                              with individuals performance. Various development training programs are conducted to
+                              enhance and empower technical, managerial and behavioral skills of our new employees and
+                              ensure very smooth professional journey of them. These programs make them to learn and
+                              think out of the box. </p>
+                           <p>We acquire right talents, provide them – </p>
+                           <ol type="a">
+                              <li>Motivating working environment</li>
+                              <li>Empower them to decide and act</li>
+                              <li>Provide growth &amp; learning opportunities</li>
+                              <li>Encourage risk taking </li>
+                              <li>Increase employees productivity</li>
+                              <li>Align employee's work with organization's vision &amp; goal </li>
+                              <li>Richer career development programs</li>
+                              <li>Strong team culture </li>
+                           </ol>
+                           <br>
+                           <p>Speed and growth is the only way of life at MPPKVVCL. We have wide range of career
+                              opportunities which not only meet people's passion and professional needs but fulfill
+                              their aspiration. Here you will find so much to achieve and explore. So, if you are
+                              seeking for fulfilling career and you have passion for creating the benchmarks...apply in
+                              MPPKVVCL. </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="tab-pane" id="tab2" role="tabpanel">
+                     <div class="loadr" *ngIf='loader'>
+                        <img src="assets/img/loading.gif" class="loadimg">
+                    </div>
+                     <h4>Current Openings</h4>
+                     <hr>
+                     <div class="row">
+                        <div class="col-md-12 table-responsive">
+                           <table class="table table-bordered">
+                              <tbody>
+                                 <tr class="thead">
+                                    <th>Sr. No.</th>
+                                    <th>Current Openings</th>
+                                    <th>Information Documents</th>
+                                 </tr>
+                              </tbody>
+                              <!---->
+                              <tbody *ngFor='let data1 of resp5;index as i'>
+
+                                 <tr>
+                                    <td rowspan="6">{{i+1}}</td>
+                                 </tr>
+                                 <tr *ngFor='let data of data1.docs;index as i1'>
+
+                                    <td>{{data.subject}}</td>
+                                    <td><a class="btn btn-info btn-xs" target="_blank"
+                                          [routerLink]="['/view-pdf',data.filepath,data.subject,data.docdescription,data.filename]">
+                                          View Document</a></td>
+
+                                 </tr>
+                              </tbody>
+                              <tbody *ngIf="resp5?.length < 1">
+                                 <tr>
+                                    <td colspan="5" class="text-center">No record found.</td>
+                                 </tr>
+                              </tbody>
+                              <!---->
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="tab-pane" id="tab3" role="tabpanel">
+                     <div class="loadr" *ngIf='loading'>
+                        <img src="assets/img/loading.gif" class="loadimg">
+                    </div>
+                     <h4>Latest Results</h4>
+                     <hr>
+                     <div class="row">
+                        <div class="col-md-12 table-responsive">
+                           <table class="table table-bordered">
+                              <tbody>
+                                 <tr class="thead">
+                                    <th>Sr. No.</th>
+                                    <th>Latest Results </th>
+                                    <th>Information Documents</th>
+                                 </tr>
+                              </tbody>
+                              <!---->
+                              <tbody *ngFor='let data2 of resp06;index as i'>
+
+                                 <tr>
+                                    <td rowspan="6">{{i+1}}</td>
+                                 </tr>
+                                 <tr *ngFor='let data of data2.docs;index as i1'>
+
+                                    <td>{{data.subject}}</td>
+                                    <td><a class="btn btn-info btn-xs" target="_blank"
+                                          [routerLink]="['/view-pdf',data.filepath,data.subject,data.docdescription,data.filename]">
+                                          View Document</a></td>
+
+                                 </tr>
+                              </tbody>
+                              <tbody *ngIf="resp06?.length < 1">
+                                 <tr>
+                                    <td colspan="5" class="text-center">No record found.</td>
+                                 </tr>
+                              </tbody>
+                              <!---->
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<app-footer></app-footer>

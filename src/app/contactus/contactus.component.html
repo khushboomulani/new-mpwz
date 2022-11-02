@@ -1,0 +1,83 @@
+<div class="main-wrap">
+   <app-header></app-header>
+   <div class="container">
+      <div class="btn-group btn-breadcrumb breadcrumb-default">
+         <a class="btn btn-default visible-lg-block visible-md-block" href="#">Home</a>
+         <div class="btn btn-default visible-xs-block hidden-xs visible-sm-block ">...</div>
+         <div class="btn btn-warning"><b>Contact Us</b></div>
+      </div>
+   </div>
+   <div class="main container cf">
+      <div class="row">
+         <div class="col-md-12">
+            <h2 class="headcontent">Contact Details (Corporate Office)</h2>
+         </div>
+         <div class="col-sm-12 col-md-6 col-lg-4 my-5">
+            <div class="card border-0">
+               <div class="card-body text-center">
+                  <i aria-hidden="true" class="fa fa-map-marker fa-3x mb-3"></i>
+                  <h4 class="text-uppercase mb-5  mt-10">office loaction</h4>
+                  <address>Madhya Pradesh Paschim Kshetra Vidyut Vitaran Company Limited GPH Compound, Polo Ground,
+                     Indore - 452003 </address>
+               </div>
+            </div>
+         </div>
+         <div class="col-sm-12 col-md-6 col-lg-4 my-5">
+            <div class="card border-0">
+               <div class="card-body text-center">
+                  <i aria-hidden="true" class="fa fa-phone fa-3x mb-3"></i>
+                  <h4 class="text-uppercase mb-5 mt-10">call us</h4>
+                  <p class="text-center">1912,0731-6700000, 0731-2426243<br>0731-2426374</p>
+                  <hr>
+                  <h4> CIN : U40109MP2002SGC015121</h4>
+               </div>
+            </div>
+         </div>
+         <div class="col-sm-12 col-md-6 col-lg-4 my-5">
+            <div class="card border-0">
+               <div class="card-body text-center">
+                  <i aria-hidden="true" class="fa fa-fax fa-3x mb-3"></i>
+                  <h4 class="text-uppercase mb-5  mt-10">Fax</h4>
+                  <address> 0731-2423300</address>
+               </div>
+            </div>
+         </div>
+         <!-- <div  class="col-sm-12 col-md-6 col-lg-3 my-5">
+          <div  class="card border-0">
+             <div  class="card-body text-center">
+                <i  aria-hidden="true" class="fa fa-globe fa-3x mb-3"></i>
+                <h4  class="text-uppercase mb-5  mt-10">email</h4>
+                <p  class="text-center">support@mpwz.org<br ></p>
+             </div>
+          </div>
+       </div> -->
+         <div class="col-md-12 mt-30">
+            <div class="loadr" *ngIf='loading'>
+               <img src="assets/img/loading.gif" class="loadimg">
+           </div>
+            <h2 class="headcontent">Contact Numbers of Corporate, REGIONAL, AND FIELD OFFICESs</h2>
+            <p>Following table contains contact number of corporate office region wise: </p>
+            <div class="table-responsive">
+               <table class="table">
+                  <tbody>
+                     <tr class="thead">
+                        <th>S.No.</th>
+                        <th>Section</th>
+                        <th>Contact-List</th>
+                     </tr>
+                     <tr *ngFor="let data of resp ; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{data.docdescription}}</td>
+                        <td> <a target="_blank"
+                              [routerLink]="['/view-pdf',data.filepath,data.subject,data.docdescription,data.filename]"><img
+                                 src="assets/img/pdf-icon.png" width="15px"></a></td>
+                     </tr>
+
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<app-footer></app-footer>

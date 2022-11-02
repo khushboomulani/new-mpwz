@@ -1,0 +1,68 @@
+<div class="main-wrap" appNoRightClick>
+    <div class="loadr" *ngIf='loading'>
+        <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+    <app-subadmin-header>
+
+    </app-subadmin-header>
+    <!-- <h2>PDF Viewer</h2>
+    
+    <div class="pdf-container">
+      <pdf-viewer [src]="src"
+                  [original-size]="false"
+      ></pdf-viewer>
+    </div> -->
+
+    <div class="main container cf">
+        <div class="row post-content">
+            <div class="col-md-12">
+                <h2>Department Section-Removed Documents List</h2>
+
+                <div class="table-responsive table-scroll">
+                    <table class="table table-striped">
+                        <tr class="thead">
+                            <th>Sr. No.</th>
+                            <!-- <th>Document ID</th> -->
+                            <th>Document Number</th>
+                            <th>Document Type</th>
+                            <th>Document Description</th>
+                            <!-- <th>Document UploadedBy</th> -->
+                            <th>Document UploadedDate</th>
+                            <th>Document DateRemoved</th>
+                            <th>Document reasonremoved</th>
+                            <!-- <th>Document timeupload</th> -->
+                            <!-- <th>Document status</th> -->
+                            <!-- <th>Document filename</th>
+              <th>Document filepath</th> -->
+                            <th>Document removedby</th>
+                            <th>Document subject</th>
+
+                            <th width="250px">Action</th>
+                        </tr>
+                        <tr *ngFor='let data of resp1;index as i'>
+                            <td>{{i+1}}</td>
+                            <!-- <td>{{data.docid}}</td> -->
+                            <td>{{data.docsrno}}</td>
+                            <td>{{data.doctype}}</td>
+                            <td>{{data.docdescription}}</td>
+                            <!-- <td>{{data.uploadby}}</td> -->
+                            <td>{{data.orderdate | date: 'yyyy-MM-dd'}}</td>
+                            <td>{{data.dateremoved | date: 'yyyy-MM-dd'}}</td>
+                            <td>{{data.reasonremoved}}</td>
+                            <!-- <td>{{data.timeupload}}</td> -->
+                            <!-- <td>{{data.status}}</td> -->
+                            <!-- <td>{{data.filename}}</td>
+              <td>{{data.filepath}}</td> -->
+                            <td>{{data.removedby}}</td>
+                            <td>{{data.subject}}</td>
+                            <td><a class="btn btn-info btn-xs" target="_blank"
+                                    [routerLink]="['/view-pdf',data.filepath,data.subject,data.docdescription,data.filename]">
+                                    View Document</a></td>
+                            <!-- <td><button class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal"> View Document</button></td> -->
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

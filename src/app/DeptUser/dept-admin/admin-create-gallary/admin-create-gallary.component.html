@@ -1,0 +1,76 @@
+<div class="main-wrap" appNoRightClick>
+    <div  class="loadr" *ngIf='loading'>
+      <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+    <app-dept-header></app-dept-header>
+    <div class="main container cf">
+        <div class="row post-content">
+          <div class="col-md-12">
+            <h2>Admin Create Gallery</h2>
+            <div class="login">
+            <div  class="" >
+            <form [formGroup] = "galleryForm" class="">  
+               <div class="row">
+                 <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="gallaryname">Album Name</label>
+                        <input type="text" formControlName="gallaryname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gallaryname.errors }">
+                         <div *ngIf="submitted && f.gallaryname.errors" class="invalid-feedback">
+                          <div *ngIf="f.gallaryname.errors.required">Album Name is required.</div>
+                          <div *ngIf="f.gallaryname.errors.pattern">Album Description should be accept characters and numeric.</div>
+                      </div>
+                     </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label for="galldescription">Album Description</label>
+                         <input type="text" formControlName="galldescription" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.galldescription.errors }">
+                         <div *ngIf="submitted && f.galldescription.errors" class="invalid-feedback">
+                          <div *ngIf="f.galldescription.errors.required">Album Description is required.</div>
+                          <div *ngIf="f.galldescription.errors.pattern">Album Description should be accept characters and numeric.</div>
+                        </div>
+                       </div>
+                      </div>                
+           <div class="col-md-2">
+                  <button type="submit" class="btn btn-warning btn-lar mt-21" (click)="onSubmit()" style="margin-top: 21px;">Submit</button>
+              </div>
+              <div class="clearfix"></div>
+              </div>
+              </form>
+              <!-- Modal -->
+            </div>
+          </div>
+  
+        </div>
+        <div class="col-md-12" >
+          <h2>Gallery</h2>
+          <div class="table-responsive">
+          <table class="table table-striped">
+            <tr class="thead">
+              <th>Sr. No.</th>
+              <th>Gallery Id</th>
+              <th>Gallery Name</th>
+              <th>Gallery Description</th>
+              <th>Gallery Created Date </th>
+              <th>Gallery Removed Date </th>
+              <th>Status </th>
+              <th width="250px">Action</th>
+            </tr>
+            <tr *ngFor='let data of respgetgall;index as i'>
+              <td>{{i+1}}</td>
+              <td>{{data.galaryid}}</td>
+              <td>{{data.galaryname}}</td>
+              <td>{{data.description}}</td>
+               <td>{{data.datecreated  | date: 'yyyy-MM-dd'}}</td>
+              <td>{{data.dateremoved | date: 'yyyy-MM-dd'}}</td>
+              <td>{{data.status}}</td>
+              <!-- <td><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button>&nbsp; -->
+               <td> <button class="btn btn-danger btn-xs" (click)="RemoveGallary(data.galaryid)"><i class="fa fa-remove"></i> Delete</button>&nbsp;<button class="btn btn-xs btn-success" [routerLink] = "['/view-gallary',data.galaryid]"><i class="fa fa-file"  ></i>Add Images</button></td>
+            </tr>
+          </table>
+          </div>
+        </div>
+       
+    </div> 
+    </div>
+    </div>

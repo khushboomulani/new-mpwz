@@ -1,0 +1,93 @@
+<footer appnorightclick="" class="main-footer">
+   <div class="container">
+      <div class="col-md-3 col-sm-3">
+         <h3 class="widgettitle">Press Release <a class="pull-right btn btn-xs btn-warning viewallfoot"
+               href="#/public-press-release" routerLink="/public-press-release">View All</a></h3>
+         <ul class="posts-list">
+            <!---->
+            <li *ngFor='let data1 of resp1;index as i1'>
+               <div class="content">
+                  <time datetime="2014-12-16T15:57:52+00:00">{{data1.subject}}</time>
+                  <a target="_blank"
+                     [routerLink]="['/view-pdf',data1.filepath,data1.subject,data1.docdescription,data1.filename]">{{data1.docdescription}}</a>
+               </div>
+            </li>
+            <li>
+               <div class="content-footer"></div>
+            </li>
+         </ul>
+      </div>
+      <div class="col-md-3 col-sm-3">
+         <h3 class="widgettitle">Notice Board <a class="pull-right btn btn-xs btn-warning viewallfoot"
+               href="#/public-notice-board" routerLink="/public-notice-board">View All</a></h3>
+         <ul class="posts-list">
+            <!---->
+            <li *ngFor='let data2 of docArray;index as i1'>
+                  <div class="content">
+                     <time datetime="2014-12-16T15:57:52+00:00">{{data2.subject}}</time>
+                     <a target="_blank"
+                        [routerLink]="['/view-pdf',data2.filepath,data2.subject,data2.docdescription,data2.filename]">
+                        {{data2.docdescription}}</a>
+                  </div>
+            </li>
+
+         </ul>
+      </div>
+      <div class="col-md-3 col-sm-6">
+         <h3 class="widgettitle">Photo Gallery <a class="pull-right btn btn-xs btn-warning viewallfoot" href="#/gallery"
+               routerLink="/gallery">View All</a></h3>
+         <div class="flickr-widget">
+            <!-- *ngIf="imgArray.length" -->
+            <!---->
+            <div class="flickr_badge_image" *ngFor="let d of resp3"><a routerLink="/gallery" href="#/gallery">
+                  <img class="no-display appear"
+                     src="https://mpwzservices.mpwin.co.in/mpeb_english_backend/get-a-file/get-by-pt?pt={{d.imagepath}}">
+               </a>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+         <h3 class="widgettitle">Follow Us</h3>
+         <div class="textwidget">
+            <ul class="social-icons cf">
+               <li><a class="icon fa fa-twitter" data-original-title="Twitter"
+                     href="https://twitter.com/MPEBIndore"><span class="visuallyhidden">Twitter</span></a></li>
+               <li><a class="icon fa fa-facebook" data-original-title="Facebook"
+                     href="https://www.facebook.com/MPEBIndore"><span class="visuallyhidden">Facebook</span></a></li>
+               <li><a class="icon fa fa-instagram" data-original-title="Instagram"
+                     href="https://www.instagram.com/MPEB_Indore"><span class="visuallyhidden">instagram</span></a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div class="lower-foot">
+      <div class="container">
+         <div class="widgets">
+            <div class="row">
+               <div class="col-md-12"><small style="font-size:10px"><b>DISCLAIMER-</b> MPPKVVCLtd has taken every care
+                     to ensure the accuracy of information furnished in this website. However MPPKVVCLtd does not accept
+                     any responsibility and liability for any damage or loss caused to any body as a result of any
+                     action taken on the basis of this information. MPPKVVCL shall be obliged if errors/omissions are
+                     brought to its notice for carrying out correction.</small></div>
+            </div>
+            <div class="textwidget">© 2022 <span class="copy">Contents Provided and Maintained by Madhya Pradesh Paschim
+                  Kshetra Vidyut Vitran Company Ltd. Indore (MP) </span></div>
+            <div class="menu-footer-container">
+               <ul class="menu" id="menu-footer">
+                  <li style="color:#ccc8c8">Last updated date:02/11/2022</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</footer>
+<div appnorightclick="" class="float-sm sidelink">
+   <div class="fl-fl float-fb"><i class="fa fa-plug"></i><a
+         href="https://mpwzservices.mpwin.co.in/mpeb_english/nsc_lt_app_note.jsp" target="_blank">Apply For New
+         Connection</a></div>
+   <div class="fl-fl float-tw"><i aria-hidden="true" class="fa fa-inr"></i><a
+         href="https://mpwzservices.mpwin.co.in/westdiscom/" target="_blank">Pay Your Bill Online</a></div>
+   <div class="fl-fl float-gp"><i class="fa fa-sign-in"></i><a href="#/login" routerLink="/login">Login</a></div>
+   <div class="fl-fl float-rs"><i aria-hidden="true" class="fa fa-phone"></i><a href="#/call-center"
+         routerLink="/call-center" target="_blank">1912-Helpline</a></div>
+</div>

@@ -1,0 +1,97 @@
+<div class="main-wrap" appNoRightClick>
+    <div  class="loadr" *ngIf='loading'>
+      <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+  <app-emp-header>
+  
+  </app-emp-header>
+  <!-- <h2>PDF Viewer</h2>
+  <div class="pdf-container">
+    <pdf-viewer [src]="src"
+                [original-size]="false"
+    ></pdf-viewer>
+  </div> -->
+  
+  <div class="main container cf">
+      <div class="row post-content">
+        <div class="col-md-12">
+          <h2>Employee Section</h2>
+  
+        <div class="table-responsive">
+        <table class="table table-striped" >
+          <tr class="thead">
+            <th>Sr. No.</th>
+            <th>Circular ID</th>
+            <th>Circular Number</th>
+            <th>Circular Type</th>
+            <th>Circular Description</th>
+            <th>Circular UploadedBy</th>
+            <th>Circular UploadedDate</th>
+            <th>Circular DateRemoved</th>
+             <th>Circular reasonremoved</th>
+            <th>Circular timeupload</th>
+            <th>Circular status</th>
+            <!-- <th>Circular filename</th>
+            <th>Circular filepath</th> -->
+            <th>Circular removedby</th>
+            <th>Circular subject</th>
+            
+            <th width="250px">Action</th>
+          </tr>
+          <tr *ngFor='let data of resp;index as i' >
+            <td>{{i+1}}</td>
+            <td>{{data.docid}}</td>
+            <td>{{data.docsrno}}</td>
+            <td>{{data.doctype}}</td>
+            <td>{{enc.dcrypt(data.docdescription)}}</td>
+            <td>{{data.uploadby}}</td>
+            <td>{{data.orderdate  | date: 'yyyy-MM-dd'}}</td>
+            <td>{{data.dateremoved  | date: 'yyyy-MM-dd'}}</td>
+            <td>{{data.reasonremoved}}</td>
+            <td>{{data.timeupload}}</td>
+            <td>{{data.status}}</td>
+            <!-- <td>{{data.filename}}</td>
+            <td>{{data.filepath}}</td> -->
+            <td>{{data.removedby}}</td>
+            <td>{{data.subject}}</td>
+            
+            <td><button class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal"> View Circular</button></td>
+          </tr>
+        </table>
+        </div>
+      </div>
+      <!-- Button to Open the Modal
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button> -->
+  
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Circular</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+      
+  <div class="pdf-container">
+    <pdf-viewer [src]="src" [original-size]="false"></pdf-viewer>
+    
+  </div> 
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+    
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,6 @@
+
+@media (min-width:1900px) {
+	.carousel-inner img{height: 265px !important;}
+    .mdsir img{height: 230px !important;}
+    .highlights .image-link img{height: 102px !important;}
+}

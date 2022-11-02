@@ -1,0 +1,409 @@
+<div class="main-wrap" appNoRightClick>
+    <div class="loadr" *ngIf='loading'>
+        <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+    <app-dept-header></app-dept-header>
+    <div class="main container cf">
+        <div class="row post-content">
+            <div class="col-md-12">
+                <h2>Upload Document</h2>
+                <div class="login">
+                    <form [formGroup]="uploadDocForm" class="">
+                        <!-- <form class="login"> -->
+                        <div class="row">
+                            <div class="col-sm-4">
+
+                                <div class="form-group">
+                                    <label for="doctype">Document Type</label>
+                                    <select type="doctype" formControlName="doctype" class="form-control"
+                                        (change)="CreateNewGroupId($event.target.value)"
+                                        [ngClass]="{ 'is-invalid': submitted && f.doctype.errors }">
+                                        <option value="">Select Document Type</option>
+                                        <option *ngFor="let data of resp9" value="{{data.doctype}}">{{data.doctype}}
+                                        </option>
+
+                                        <!-- <option value="Gallary">Gallary</option> -->
+
+
+                                    </select>
+                                    <div *ngIf="submitted && f.doctype.errors" class="invalid-feedback">
+                                        <div *ngIf="f.doctype.errors.required">Document Type is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label><br></label>
+                                    <!-- <select type="text" formControlName="filter" class="form-control" (change) ="filter($event.target.value)"[ngClass]="{ 'is-invalid': submitted && f.filter.errors }">
+                      <option value="">Selec Type To Add Group Id</option>
+                      <option value="0">Create New Group Id</option>
+                      <option value="1">Already Exiest Group ID</option>
+                    </select> -->
+                                    <div class="row">
+                                        <div class="col-sm-6"><input type="radio" formControlName="filter" class=""
+                                                value="0" (click)="filter('0')"
+                                                [ngClass]="{ 'is-invalid': submitted && f.filter.errors }"> Create New
+                                            Group Id</div>
+                                        <div class="col-sm-6"><input type="radio" formControlName="filter" class=""
+                                                value="1" (click)="filter('1')"> Exiest Group Id</div>
+                                    </div>
+
+                                    <div *ngIf="submitted && f.filter.errors" class="invalid-feedback">
+                                        <div *ngIf="f.filter.errors.required">Group Id Filter is required.</div>
+                                        <!-- <div *ngIf="f.filter.errors.pattern">Document Serial Number is Numeric & characters.</div> -->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4" *ngIf="isExiest">
+                                <div class="form-group">
+                                    <label for="docsrno">Select Group Id <span class="required">*</span></label>
+                                    <select type="text" formControlName="groupid" class="form-control">
+                                        <option value="">Selec Group Id</option>
+                                        <option *ngFor="let data of arrayData" value="{{data.groupid}}">
+                                            {{data.oldorderno}}--{{data.groupid}}
+                                            ---{{data.oldorderdate | date: 'yyyy-MM-dd'}}</option>
+                                        <!-- <option value="1">Already Exiest Group ID</option> -->
+                                    </select>
+
+                                    <!--<div *ngIf="submitted && f.groupid.errors" class="invalid-feedback">
+                      <div *ngIf="f.groupid.errors.required">Group Id  is required.</div>
+                      <div *ngIf="f.filter.errors.pattern">Document Serial Number is Numeric & characters.</div> 
+                    </div>-->
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4" *ngIf="newCreate">
+                                <div class="form-group">
+                                    <label for="title">New Group ID<span class="required">*</span></label>
+                                    <input type="text" value="{{newid}}" readonly class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="docsrno">Document Serial Number<span class="required">*</span></label>
+                                    <input type="text" formControlName="docsrno" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.docsrno.errors }">
+                                    <div *ngIf="submitted && f.docsrno.errors" class="invalid-feedback">
+                                        <div *ngIf="f.docsrno.errors.required">Document Serial Number is required.</div>
+                                        <div *ngIf="f.docsrno.errors.pattern">Document Serial Number is Numeric &
+                                            characters.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+
+                                <div class="form-group">
+                                    <label for="doctype">Department</label>
+                                    <select type="doctype" formControlName="dept" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.dept.errors }">
+                                        <option value="">Select Department</option>
+                                        <option value="NA">NA</option>
+                                        <option *ngFor="let dept of resp3" value="{{dept.depname}}">{{dept.depname}}
+                                        </option>
+
+                                    </select>
+                                    <div *ngIf="submitted && f.dept.errors" class="invalid-feedback">
+                                        <div *ngIf="f.dept.errors.required">Department is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="title">Title<span class="required">*</span></label>
+                                    <input type="text" formControlName="title" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                                    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                        <div *ngIf="f.title.errors.required">Title is required.</div>
+                                        <div *ngIf="f.title.errors.pattern">Title is only characters Accepted.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="desc">Description <span class="required">*</span></label>
+                                    <input type="text" formControlName='desc' class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.desc.errors }" />
+                                    <!-- <textarea class="form-control" rows="4"></textarea> -->
+                                    <div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+                                        <div *ngIf="f.desc.errors.required">Description is required</div>
+                                        <div *ngIf="f.desc.errors.pattern">Description is only characters & numeric
+                                            Accepted.</div>
+                                        <!-- <div *ngIf="f.desc.errors.minlength">Description must be at least 6 characters</div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="doc">Start Date <span class="required"></span></label>
+                                    <input type="text" class="form-control" autocomplete="off" id="startdate" />
+                                    <!-- <div *ngIf="submitted && f.doc.errors" class="invalid-feedback">
+                                        <div *ngIf="f.doc.errors.required">Document is required</div>
+                                   </div> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="doc">End Date <span class="required"></span></label>
+                                    <input type="text" class="form-control" autocomplete="off" id="enddate" />
+                                    <!-- <div *ngIf="submitted && f.doc.errors" class="invalid-feedback">
+                                        <div *ngIf="f.doc.errors.required">Document is required</div>
+                                   </div> -->
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="doc">Date of Document <span class="required">*</span></label>
+                                    <input type="text" class="form-control" autocomplete="off" id="datepicker" />
+                                    <!-- <div *ngIf="submitted && f.doc.errors" class="invalid-feedback">
+                                        <div *ngIf="f.doc.errors.required">Document is required</div>
+                                   </div> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="doc">Upload Document <span class="required">*</span></label>
+                                    <input type="file" accept=".pdf" class="" multiple
+                                        (change)="onFilesChanged($event)" />
+                                    <!-- <div *ngIf="submitted && f.doc.errors" class="invalid-feedback">
+                            <div *ngIf="f.doc.errors.required">Document is required</div>
+                       </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-warning btn-lar" (click)="uploadDoc()">Submit</button>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                    <!-- Modal -->
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="row post-content">
+            <div class="col-md-12">
+                <h2>Admin Section</h2>
+                <div class="table-responsive">
+                    <div class="table-responsive table-scroll">
+                        <table class="table table-striped">
+                            <tr class="thead">
+
+                                <th>Sr. No.</th>
+                                <th>Group ID</th>
+                                <th>Document Number</th>
+                                <th>Document Type</th>
+                                <th>Document Description</th>
+                                <th>Department </th>
+                                <th> Uploaded Date</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <!-- <th>Document DateRemoved</th> -->
+                                <!-- <th>Document reasonremoved</th> -->
+                                <!-- <th>Document timeupload</th> -->
+                                <!-- <th>Document status</th> -->
+                                <!-- <th>Document filename</th>
+                  <th>Document filepath</th> -->
+                                <!-- <th>Document removedby</th> -->
+                                <th>Document subject</th>
+                                <th width="250px">Action</th>
+                            </tr>
+                            <tbody *ngFor='let data of resp;index as i'>
+                                <!-- <ng-container > -->
+                                <!-- <tr>
+                      <td rowspan="6">{{i+1}}</td>
+                    </tr> -->
+                                <tr>
+                                    <td>{{i+1}}</td>
+                                    <td>{{data.groupid}}</td>
+                                    <td>{{data.docsrno}}</td>
+                                    <td>{{data.doctype}}</td>
+                                    <td>{{data.docdescription}}</td>
+                                    <td>{{data.department}}</td>
+                                    <td>{{data.orderdate | date: 'yyyy-MM-dd'}}</td>
+                                    <!-- <td>{{data.dateremoved  | date: 'yyyy-MM-dd'}}</td>
+                  <td>{{data.reasonremoved}}</td>
+                  <td>{{data.timeupload}}</td>
+                  <td>{{data.status}}</td> -->
+                                    <td>{{data.startdate | date: 'yyyy-MM-dd'}}</td>
+                                    <td>{{data.enddate | date: 'yyyy-MM-dd'}}</td>
+                                    <!-- <td>{{data.removedby}}</td> -->
+                                    <td>{{data.subject}}</td>
+                                    <td><a class="btn btn-info btn-xs" target="_blank"
+                                            [routerLink]="['/view-pdf',data.filepath,data.subject,data.docdescription,data.filename]">
+                                            View Document</a>
+                                        <!-- <td><button class="btn btn-info btn-xs"  (click)="onDownload(data.filepath)"> View Document</button> -->
+                                        &nbsp; &nbsp; <button class="btn btn-danger btn-xs" data-toggle="modal"
+                                            data-target="#removeModel"
+                                            (click)="getDocData(data.docid,data.subject,data.docsrno)"> Remove
+                                            Doc</button>
+                                        <!-- <td><button class="btn btn-info btn-xs"  data-toggle="modal" data-target="#myModal" (click)="onDownload(data.filepath)"> View Document</button></td> -->
+                                </tr>
+                                <!-- </ng-container> -->
+                            </tbody>
+
+                        </table>
+                    </div>
+
+
+
+                    <div class="modal fade" id="removeModel" tabindex="-1" role="dialog" aria-labelledby="removeModel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="removeModel">Uploaded Document</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form [formGroup]="removeForm" (ngSubmit)="OnRemove()" class="">
+                                    <div class="modal-body">
+
+                                        <div class="row">
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="title">Document Number<span
+                                                            class="required">*</span></label>
+                                                    <input type="text" class="form-control" readonly
+                                                        value="{{circularNo}}">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="title">Document Subject<span
+                                                            class="required">*</span></label>
+                                                    <input type="text" class="form-control" readonly
+                                                        value="{{circularSub}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="title">Reason for Remove<span
+                                                            class="required">*</span></label>
+                                                    <input type="text" formControlName="remark" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted2 && f2.remark.errors }">
+                                                    <div *ngIf="submitted2 && f2.remark.errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f2.remark.errors.required">Resaon is required.</div>
+                                                        <div *ngIf="f2.remark.errors.pattern">Reason is Accepted
+                                                            characters.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- </div> -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" (click)="OnRemove()">Save
+                                            changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Uploaded Document</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <form [formGroup]="removeForm" (ngSubmit)="OnRemove()" class="">
+                                    <div class="login">
+
+                                        <!-- <form class="login"> -->
+                                        <div class="row">
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="title">Document Number<span
+                                                            class="required">*</span></label>
+                                                    <input type="text" class="form-control" readonly
+                                                        value="{{circularNo}}">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="title">Document Subject<span
+                                                            class="required">*</span></label>
+                                                    <input type="text" class="form-control" readonly
+                                                        value="{{circularSub}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="title">Reason for Remove<span
+                                                            class="required">*</span></label>
+                                                    <input type="text" formControlName="remark" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted2 && f2.remark.errors }">
+                                                    <div *ngIf="submitted2 && f2.remark.errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f2.remark.errors.required">Title is required.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 text-center">
+
+
+                                        </div>
+                                        <div class="clearfix"></div>
+
+                                        <!-- Modal -->
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-warning btn-lar">Submit</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

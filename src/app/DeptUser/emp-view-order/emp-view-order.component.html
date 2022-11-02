@@ -1,0 +1,71 @@
+<div class="main-wrap" appNoRightClick>
+    <div class="loadr" *ngIf='loading'>
+        <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+    <app-emp-header>
+
+    </app-emp-header>
+    <!-- <h2>PDF Viewer</h2>
+    
+    <div class="pdf-container">
+      <pdf-viewer [src]="src"
+                  [original-size]="false"
+      ></pdf-viewer>
+    </div> -->
+
+    <div class="main container cf">
+        <div class="row post-content">
+            <div class="col-md-12">
+                <h2>Employee Section</h2>
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr class="thead">
+                            <th>Sr. No.</th>
+                            <th>Order ID</th>
+                            <th>Order Number</th>
+                            <th>Order Type</th>
+                            <th>Order Description</th>
+                            <th>Order UploadedBy</th>
+                            <th>Order UploadedDate</th>
+                            <th>Order DateRemoved</th>
+                            <th>Order reasonremoved</th>
+                            <th>Order timeupload</th>
+                            <th>Order status</th>
+                            <!-- <th>Order filename</th>
+              <th>Order filepath</th> -->
+                            <th>Order removedby</th>
+                            <th>Order subject</th>
+
+                            <th width="250px">Action</th>
+                        </tr>
+                        <tr *ngFor='let data of resp;index as i'>
+                            <td>{{i+1}}</td>
+                            <td>{{data.docid}}</td>
+                            <td>{{data.docsrno}}</td>
+                            <td>{{data.doctype}}</td>
+                            <td>{{data.docdescription}}</td>
+                            <td>{{data.uploadby }}</td>
+                            <td>{{data.orderdate | date: 'yyyy-MM-dd'}}</td>
+                            <td>{{data.dateremoved | date: 'yyyy-MM-dd'}}</td>
+                            <td>{{data.reasonremoved}}</td>
+                            <td>{{data.timeupload}}</td>
+                            <td>{{data.status}}</td>
+                            <!-- <td>{{data.filename}}</td>
+              <td>{{data.filepath}}</td> -->
+                            <td>{{data.removedby}}</td>
+                            <td>{{data.subject}}</td>
+                            <td><button class="btn btn-info btn-xs"
+                                    (click)="getSrc(data.filepath,data.subject,data.docdescription,data.filename)"> View
+                                    Order</button></td>
+                            <!-- <td><button class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal"> View Order</button></td> -->
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

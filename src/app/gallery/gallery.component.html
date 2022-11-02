@@ -1,0 +1,66 @@
+
+<div class="main-wrap">
+    <div class="loadr" *ngIf='loader'>
+        <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+    <app-header></app-header>
+    <div class="container">
+        <div class="btn-group btn-breadcrumb breadcrumb-default">
+            <a href="#" class="btn btn-default visible-lg-block visible-md-block">Home</a>
+            <div class="btn btn-default visible-xs-block hidden-xs visible-sm-block ">...</div>
+            <div class="btn btn-warning"><b>Gallery</b></div>
+        </div>
+    </div>
+    <div class="main container cf">
+        <div class="row post-content">
+            <div class="col-md-12">
+                <!-- <h2>Gallery</h2> -->
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr class="thead">
+                            <th>Sr. No.</th>
+                            <th>Gallery Name</th>
+                            <th>Gallery Description</th>
+                            <!-- <th>Department ID</th> -->
+                            <th>Action</th>
+
+                        </tr>
+                        <tr *ngFor='let data of respgetgall;index as i'>
+                            <td>{{i+1}}</td>
+                            <td>{{data.galaryname}}</td>
+                            <td>{{data.description}}</td>
+                            <!-- <td>{{data.depid}}</td> -->
+                            <!-- <td><button class="btn btn-danger btn-xs"><i class="fa fa-remove" (click)="RemoveDept(data.depid,data.depname)"></i> Delete</button></td> -->
+                            <td><button class="btn btn-success btn-xs" (click)="GetImagePath(data.galaryid)">
+                                    View</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" *ngIf="showGallary">
+            <div class="col-md-12">
+                <h2 class="headcontent">Gallery</h2>
+            </div>
+
+            <div class="col-sm-12 ">
+                <div class="demo-gallery">
+                    <ul class="lightgallery">
+                        <li *ngFor="let dt of dataArray" class="col-md-2" data-responsive="" [attr.data-src]="dt"
+                            data-sub-html="">
+                            <a href="{{dt}}" data-lightbox="image-1" data-title="img">
+                                <img class="img-responsive" src="{{dt}}" style="height: 120px;width: 100%;">
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

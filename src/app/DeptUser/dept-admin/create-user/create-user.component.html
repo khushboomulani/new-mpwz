@@ -1,0 +1,108 @@
+<div class="main-wrap" appNoRightClick>
+    <div  class="loadr" *ngIf='loading'>
+      <img src="assets/img/loading.gif" class="loadimg">
+    </div>
+    <app-dept-header></app-dept-header>
+    <div class="main container cf">
+      <div class="row post-content">
+  <div class="col-md-12">
+    <h2>Create User<br><b>Note</b>
+    <span style="color: red;">Multiple users can not be created for any department - only single user is allowed</span>
+    </h2>
+    <div class="login">
+    <form [formGroup] = "createuserForm" class="" (ngSubmit)="onSubmit()">
+     <!-- <form class="login"> -->
+  
+       <div class="row">
+         <div class="col-md-6">
+            <div class="form-group">
+                <label for="userrole">Userrole</label>
+                <select  class="form-control" formControlName="userrole" [ngClass]="{ 'is-invalid': submitted && f.userrole.errors }">
+                <!-- <input type="text" formControlName="userrole" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userrole.errors }"> -->
+                <option value="">Select User Role</option>
+                <!-- <option value="EMPLOYEE">EMPLOYEE</option> -->
+                 <option value="DEPT">DEPT</option>
+              </select>
+                <div *ngIf="submitted && f.userrole.errors" class="invalid-feedback">
+                  <div *ngIf="f.userrole.errors.required">Userrole is required.</div>
+              </div>
+              </div>
+              <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                   <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                  <div *ngIf="f.username.errors.required">Username is required.</div>
+                  <div *ngIf="f.username.errors.pattern">username is only accept characters.</div>
+              </div>
+            </div>
+         </div>
+         <div class="col-md-6">
+          <div class="form-group">
+              <label for="dept">Department</label>
+              <select  type="text" formControlName="dept" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dept.errors }" (change)="getdeptid($event.target.value)" > 
+                <option   *ngFor ='let data of respdept' value="{{data.depid}}">{{data.depname}}</option> 
+              </select>
+           <div *ngIf="submitted && f.dept.errors" class="invalid-feedback">
+                <div *ngIf="f.dept.errors.required">Department is required.</div>
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="userid">Userid </label>
+                <input  type="text"  class="form-control" value="{{deptid}}" readonly> 
+                                
+              
+             </div>
+  </div>
+       </div>
+        <div class="col-md-6">
+              <div class="form-group">
+                  <label for="mobileno">Mobile No.</label>
+                  <input type="text" formControlName="mobileno" class="form-control" maxlength="10" minlength="10" [ngClass]="{ 'is-invalid': submitted && f.mobileno.errors }">
+                   <div *ngIf="submitted && f.mobileno.errors" class="invalid-feedback">
+                  <div *ngIf="f.mobileno.errors.required">Mobile No. is required.</div>
+                  <div *ngIf="f.mobileno.errors.pattern">Mobile No. is only accept Numeric.</div>
+                  <div *ngIf="f.mobileno.errors.maxlength">Mobile No. is Max 10 digits.</div>
+  
+                  <div *ngIf="f.mobileno.errors.minlength">Mobile No. is Min 10 digits..</div>
+              </div>
+            </div>
+         </div>
+   <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-warning btn-lar">Submit</button>
+      </div>
+      <div class="clearfix"></div>
+      </form>
+      <!-- Modal -->
+    </div>
+  </div>
+  </div>
+  <div class="row post-content">
+    <div class="col-md-12">
+      <h2>Existing User List</h2>
+      <div class="table-responsive">
+      <table class="table table-striped" >
+        <tr class="thead">
+          <th>Sr. No.</th>
+          <th>LoginId</th>
+          <th>UserRole</th>
+          <th>User Name</th>
+          <th>Department</th>
+          <th>Mobile No.</th>
+        </tr>
+        <tr *ngFor='let data of resp2;index as i' >
+          <td>{{i+1}}</td>
+          <td>{{data.loginid}}</td>
+          <td>{{data.userrole}}</td>
+          <td>{{data.username}}</td>
+          <td>{{data.department}}</td>
+          <td>{{data.mobileno}}</td>
+          <!-- <td><button class="btn btn-danger btn-xs"><i class="fa fa-remove" (click)="RemoveDept(data.depid,data.depname)"></i> Delete</button></td> -->
+          <!-- <td><button class="btn btn-success btn-xs" [routerLink]="['/admin-assign-role',data.depname,data.depid]"> Assign Role</button></td> -->
+        </tr>
+      </table>
+      </div>
+    </div>
+  
+  </div>
+  </div>
+  </div>

@@ -1,0 +1,59 @@
+<div id="main-head" class="main-head" appNoRightClick>
+    <div class="container">
+       <header>
+         <div class="row">
+           <div class="col-md-2 col-sm-2 col-xs-12 setlogo">
+                 <a href="#"><img src="assets/img/logo.png" class="logo">	</a>
+           </div>
+           <div class="col-md-8 col-xs-8 col-sm-7 hidden-xs">
+             <img src="../../../assets/img/header-banner.jpg" width="100%" height="100px">
+           <!--  <h5 class="mpebtext">Madhya Pradesh Paschim Kshetra Vidyut Vitaran Company Ltd.</h5>
+           <h5 class="subtext">(Wholly owned by Government of MP) </h5>  -->
+           </div>
+           <div class="col-md-2 col-sm-3 col-xs-12 sidemenu text-center">
+           <div class="side-option top-bar">	         
+              <!-- <a href="#" routerLink='/help'>Help |</a> -->
+               <!-- <a href="#" routerLink='/sitemap'>&nbsp;Sitemap </a>                     -->
+           <div class="search">
+            <form >
+              <!-- <input autocomplete="off" name="s" class="query live-search-query" value="" placeholder="Search..." type="text"> -->
+              <!-- <button class="search-button" type="submit"><i class="fa fa-search"></i></button> -->
+            </form>
+          </div>
+           </div>
+         </div>   
+        </div> 
+       </header>
+  <nav class="navigation cf"> 
+   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <i class="fa fa-bars"></i>
+   </button>
+   <a class="navbar-brand" href="#">Menu</a>       
+     <div class="menu-main-menu-container collapse navbar-collapse" id="navbar-collapse-1">
+             <ul id="menu-main-menu" class="menu">
+                <li id="" class="current-menu-item"><a  routerLink='/dept-home'>Home</a></li>
+                <li id="" class=""><a href="#" routerLink='/create-department'>Create Department</a></li>
+                <li id="" class=""><a href="#" routerLink='/create-user'>Create User</a></li>
+                <li id="" class=""><a href="#" routerLink='/dept-admin'>Upload/View Document</a></li>
+                <!-- <li id="" class=""><a href="#" routerLink='/view-dept-list'>View Documents</a></li> -->
+                <li id="" class=""><a href="#" routerLink='/admin-create-gallary'>Gallery</a></li>
+                <li ></li>
+                <li style="color: white;"> &nbsp;&nbsp;&nbsp;&nbsp; </li>
+               
+             </ul>
+          <ul class="menu pull-right">
+           <li id="" class="">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{username}}</a>
+              <ul class="sub-menu" style="right: 0;">
+                  <li id="" class=""><a>User Role:<span class="pull-right">{{userrole}}</span> </a></li>
+                  <li><a>User Id:<span class="pull-right">{{loginid}}</span></a></li>
+                  <li><a  href="" (click)="logout()">Logout</a></li>
+  
+              </ul>
+             </li>
+          </ul>
+          </div>
+       </nav>
+    </div>
+  </div>
