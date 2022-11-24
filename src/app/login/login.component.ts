@@ -88,6 +88,7 @@ export class LoginComponent implements OnInit {
               this.msg = dt.msg;
               this.loading = false;
               this.sysotp = this.enc.dcrypt(dt.encotp);
+              
               // alert(this.sysotp);
               this.showlogin = false;
               this.showotp = true;
@@ -153,6 +154,7 @@ export class LoginComponent implements OnInit {
               this.resp4 = this.enc.dcrypt(this.resp3.resp);
               this.loading = false;
               let data = JSON.parse(this.resp4)
+              console.log(this.resp4)
               // alert(data)
               if (data.flag == true) {
                 this.session.set('loginid', data.loginid);

@@ -14,7 +14,10 @@ export class PerformanceComponent implements OnInit {
 
   ngOnInit(): void {
     this.pdfObj = [
-      
+      {
+        'date':'15.11.2022',
+         'link':'assets/img/pdf/Fortnightly_Stock_Position_15.11.2022.pdf'
+         },
       {
         'date':'15.10.2022',
          'link':'assets/img/pdf/Fortnightly_Stock_Position_15.10.2022.pdf'
